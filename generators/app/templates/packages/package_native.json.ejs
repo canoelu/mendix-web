@@ -1,0 +1,43 @@
+{
+  "name": "<%- packageName %>",
+  "widgetName": "<%- name %>",
+  "version": "<%- version %>",
+  "description": "<%- description %>",
+  "copyright": "<%- copyright %>",
+  "author": "<%- author %>",
+  "engines": {
+    "node": ">=12"
+  },
+  "config": {
+    "projectPath": "<%- projectPath %>/"
+  },
+  "packagePath": "<%- packagePath %>",
+  "scripts": {
+    "start": "pluggable-widgets-tools start:native",
+    "build": "pluggable-widgets-tools build:native",
+    "lint": "pluggable-widgets-tools lint",
+    "lint:fix": "pluggable-widgets-tools lint:fix",<% if (hasUnitTests) { %>
+    "test": "pluggable-widgets-tools test:unit:native --no-cache --ci",
+    "test:unit": "pluggable-widgets-tools test:unit:native --coverage",<% } %>
+    "prerelease": "npm run lint",
+    "release": "pluggable-widgets-tools release:native"
+  },<% if (hasUnitTests) { %>
+  "jest-junit": {
+    "output": "./dist/testresults/TESTS-Jest.xml"
+  },<% } %>
+  "license": "<%- license %>",
+  "bugs": {
+    "url": "https://github.com/<%- author %>/<%- packageName %>/issues"
+  },
+  "devDependencies": {
+    "@mendix/pluggable-widgets-tools": "^9.0.0"<% if (isLanguageTS) { %>,
+    "@types/big.js": "^6.0.2",<% if (hasUnitTests) { %>
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^26.0.22",<% } %>
+    "@types/react": "~17.0.1",
+    "@types/react-native": "~0.63.52"<% } %>
+  },
+  "dependencies": {
+
+  }
+}

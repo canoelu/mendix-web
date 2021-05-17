@@ -1,11 +1,11 @@
 {
-  "name": "generator-menxi-web",
+  "name": "generator-mendix-web",
   "version": "0.0.0",
   "description": "",
   "homepage": "",
   "author": {
     "name": "xulu",
-    "email": "xulu@zhiyuanhui.com",
+    "email": "lu.xu@rootcloud.com",
     "url": ""
   },
   "bugs": {

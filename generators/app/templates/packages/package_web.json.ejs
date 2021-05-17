@@ -1,0 +1,32 @@
+{
+  "name": "<%- packageName %>",
+  "widgetName": "<%- name %>",
+  "version": "<%- version %>",
+  "description": "<%- description %>",
+  "copyright": "<%- copyright %>",
+  "author": "<%- author %>",
+  "engines": {
+    "node": ">=12"
+  },
+  "config": {
+    "projectPath": "<%- projectPath %>/",
+    "mendixHost": "http://localhost:8080",
+    "developmentPort": "3000"
+  },
+  "packagePath": "<%- packagePath %>",
+  "scripts": {
+    "start": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js start:web",
+    "dev": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js start:web",
+    "build": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js build:web",
+    "lint": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js lint",
+    "lint:fix": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js lint:fix",<% if (hasUnitTests) { %>
+    "test": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js test:unit:web --no-cache --ci<% if (hasE2eTests) { %> && npm run test:e2e<% } %>",
+    "test:unit": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js test:unit:web --coverage",<% } %><% if (hasE2eTests) { %>
+    "test:e2e": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js test:e2e --url \"https://badge.mxapps.io\"",
+    "test:e2e:dev": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js test:e2e --debug",<% } %>
+    "prerelease": "npm run lint",
+    "release": "node ../../node_modules/@mendix/pluggable-widgets-tools/bin/mx-scripts.js release:web"
+  },
+  "license": "<%- license %>"
+   
+}

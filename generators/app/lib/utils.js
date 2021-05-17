@@ -6,19 +6,18 @@ function getWidgetDetails(answers) {
         ...answers,
         name: answers.name.replace(/(^|\s)\S/g, l => l.toUpperCase()), // Capitalize first letter if it's not
         packageName: answers.name.toLowerCase(),
-        packagePath: 'mendix',
-        description:'mendix web',
+        packagePath: answers.organization.trim().toLowerCase(),
         projectPath: answers.projectPath.replace(/\\/g, "\\\\"),
-        platform:'web',
-        version:'1.0.0',
-        isPlatformWeb: true,
-        isPlatformNative: false,
-        usesEmptyTemplate: true,
-        usesFullTemplate: false,
-        isLanguageJS: false,
-        isLanguageTS: true,
-        fileExtension:  "ts",
-        templateSourcePath: `pluggable/web/emptyTemplateTs/`
+        isPlatformWeb: answers.platform === "web",
+        isPlatformNative: answers.platform === "native",
+        usesEmptyTemplate: answers.boilerplate === "empty",
+        usesFullTemplate: answers.boilerplate === "full",
+        isLanguageJS: answers.programmingLanguage === "javascript",
+        isLanguageTS: answers.programmingLanguage === "typescript",
+        fileExtension: answers.programmingLanguage === "javascript" ? "js" : "ts",
+        templateSourcePath: `pluggable/${answers.platform}/${answers.boilerplate}Template${
+            answers.programmingLanguage === "javascript" ? "Js" : "Ts"
+        }/`
     };
 }
 
